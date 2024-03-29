@@ -1,7 +1,7 @@
 package me.dio.sdw24.adapters.out;
 
 import me.dio.sdw24.domain.model.Champions;
-import me.dio.sdw24.domain.model.ports.ChampionsRespository;
+import me.dio.sdw24.domain.model.ports.ChampionsRepository;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -10,12 +10,12 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class ChampionsJdbcRepository implements ChampionsRespository {
+public class ChampionsJdbcRepository implements ChampionsRepository {
 
     private final JdbcTemplate jdbcTemplate;
     private final RowMapper<Champions> rowMapper;
 
-    public ChampionsJdbcRepository(JdbcTemplate jdbcTemplate, RowMapper<Champions> rowMapper) {
+    public ChampionsJdbcRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
         this.rowMapper = ((rs, rowNum) -> new Champions(
                 rs.getLong("id"),
