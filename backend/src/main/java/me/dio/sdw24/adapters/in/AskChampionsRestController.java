@@ -21,6 +21,5 @@ public record AskChampionsRestController(AskChampionsUseCase useCase) {
     }
 
     public record AskChampionResponse(String answer) {
-
     }
 }

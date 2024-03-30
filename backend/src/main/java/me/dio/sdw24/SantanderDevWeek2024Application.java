@@ -3,10 +3,13 @@ package me.dio.sdw24;
 import me.dio.sdw24.application.AskChampionsUseCase;
 import me.dio.sdw24.application.ListChampionsUseCase;
 import me.dio.sdw24.domain.ports.ChampionsRepository;
+import me.dio.sdw24.domain.ports.GenerativeAiApiService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 
+@EnableFeignClients
 @SpringBootApplication
 public class SantanderDevWeek2024Application {
 
@@ -18,8 +21,8 @@ public class SantanderDevWeek2024Application {
 	}
 
 	@Bean
-	public AskChampionsUseCase provideAskChampionsUseCase(ChampionsRepository repository) {
-		return new AskChampionsUseCase(repository);
+	public AskChampionsUseCase provideAskChampionsUseCase(ChampionsRepository repository, GenerativeAiApiService genAiApi) {
+		return new AskChampionsUseCase(repository, genAiApi);
 	}
 
 }
