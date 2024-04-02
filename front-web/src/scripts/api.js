@@ -41,7 +41,39 @@ const state = {
 };
 
 async function main() {
+  await loadChampions();
+  await renderChampions();
   await loadCarrousel();
+}
+
+async function loadChampions() {
+  const data = await apiService.getChampions();
+  state.values.champions = data;
+}
+
+async function renderChampions() {
+  const championsData = state.values.champions;
+  const elements = championsData.map(
+    (character) =>
+      `<div class="timeline-carousel__item">
+    <div class="timeline-carousel__image">
+      <div
+        class="media-wrapper media-wrapper--overlay"
+        style="
+          background: url('${character.imageUrl}')
+            center center;
+          background-size: cover;
+        "
+      ></div>
+    </div>
+    <div class="timeline-carousel__item-inner">
+      <span class="name">${character.name}</span>
+      <span class="role">${character.role}</span>
+      <p>${character.lore}</p>
+    </div>
+  </div>`
+  );
+  state.views.carousel.innerHTML = elements.join(" ");
 }
 
 async function loadCarrousel() {
