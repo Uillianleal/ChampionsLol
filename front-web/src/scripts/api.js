@@ -15,12 +15,10 @@ const apiService = {
     const route = routes.ask.replace("{id}", id);
     const options = {
       method: "POST",
-      header: {
+      headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        question: message,
-      }),
+      body: JSON.stringify({ question: message }),
     };
     const response = await fetch(route, options);
     return await response.json();
@@ -85,7 +83,34 @@ async function onChangeChampionSelected(id, imageUrl) {
 
 async function resetForm() {
   state.views.question.value = "";
-  state.views.response.textContent = "Pode vir";
+  state.views.response.textContent = await getRandomQuote();
+}
+
+async function getRandomQuote() {
+  const quotes = [
+    "Manda Ver meu nobre",
+    "Pode vir quente que eu to fervendo",
+    "Aguardo sua pergunta",
+    "Espero anciosamente pela sua pergunta",
+    "Estou começando a sicar com tédio",
+    "Tenho vidas a salvar, vá depressa com isso",
+    "Não vai ficar ai o dia todo vai ?",
+    "Talvez seja melhor ir jogar Dota...",
+    "Ainda to tentando entender como essa giringonça funcionada",
+    "Vamos que vamo meu chapa",
+  ];
+
+  const randomIndex = Math.floor(Math.random() * quotes.length);
+  return quotes[randomIndex];
+}
+
+async function fetchAskChampion() {
+  document.body.style.cursor = "wait";
+  const id = state.views.avatar.dataset.id;
+  const message = state.views.question.value;
+  const response = await apiService.postAskChampion(id, message);
+  state.views.response.textContent = response.answer;
+  document.body.style.cursor = "default";
 }
 
 async function loadCarrousel() {
