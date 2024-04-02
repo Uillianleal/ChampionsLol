@@ -1,3 +1,49 @@
+const routes = {
+  champions:
+    "http://championleagueoflegends.sa-east-1.elasticbeanstalk.com/champions",
+  ask: "http://championleagueoflegends.sa-east-1.elasticbeanstalk.com/champions/{id}/ask",
+};
+
+const apiService = {
+  async getChampions() {
+    const route = routes.champions;
+    const response = await fetch(route);
+    return await response.json();
+  },
+
+  async postAskChampion(id, message) {
+    const route = routes.ask.replace("{id}", id);
+    const options = {
+      method: "POST",
+      header: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        question: message,
+      }),
+    };
+    const response = await fetch(route, options);
+    return await response.json();
+  },
+};
+
+const state = {
+  values: {
+    champions: [],
+  },
+
+  views: {
+    response: document.querySelector(".text-reponse"),
+    question: document.getElementById("text-request"),
+    avatar: document.getElementById("avatar"),
+    carousel: document.getElementById("carousel-cards-content"),
+  },
+};
+
+async function main() {
+  await loadCarrousel();
+}
+
 async function loadCarrousel() {
   const caroujs = (el) => {
     return $("[data-js=" + el + "]");
@@ -28,4 +74,4 @@ async function loadCarrousel() {
   });
 }
 
-loadCarrousel();
+main();
