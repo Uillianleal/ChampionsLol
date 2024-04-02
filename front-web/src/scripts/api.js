@@ -1,7 +1,6 @@
 const routes = {
-  champions:
-    "http://championleagueoflegends.sa-east-1.elasticbeanstalk.com/champions",
-  ask: "http://championleagueoflegends.sa-east-1.elasticbeanstalk.com/champions/{id}/ask",
+  champions: `${API_BASE_URL}/champions`,
+  ask: `${API_BASE_URL}/champions/{id}/ask`,
 };
 
 const apiService = {
