@@ -1,2 +1,1 @@
-const API_BASE_URL =
-  "http://championleagueoflegends.sa-east-1.elasticbeanstalk.com";
+const API_BASE_URL = "https://championsapilol-latest.onrender.com";
