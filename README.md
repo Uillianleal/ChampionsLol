@@ -24,7 +24,7 @@ Faça sua pergunta e tenha a experiência única de conversar diretamente com os
 # Diagrama Arquitetural
 A seguir, apresentamos o diagrama arquitetural do projeto **[escrito com Mermaid](https://mermaid.js.org/)**, destacando a separação das responsabilidades entre as camadas. 
 Desde a interface de usuário até os mecanismos de interação com sistemas externos, passando por adaptadores, casos de uso e as entidades centrais do domínio, cada elemento é estrategicamente posicionado para reforçar a modularidade, 
-a escalabilidade e a manutenibilidade do sistema. Esta estrutura facilita a compreensão de como os componentes colaboram para a realização dos objetivos do software, alinhando-se aos princípios da Clean Architecture **[escrito com Mermaid](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)** (inclusive nas cores dos elementos).
+a escalabilidade e a manutenibilidade do sistema. Esta estrutura facilita a compreensão de como os componentes colaboram para a realização dos objetivos do software, alinhando-se aos princípios da  **[Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)** (inclusive nas cores dos elementos).
 
 ![Arquitetura 1](https://github.com/Uillianleal/imagens/blob/main/assets-champions-lol/Captura%20de%20tela%202024-03-28%20131707.png?raw=true) 
 
